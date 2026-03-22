@@ -231,6 +231,26 @@
         
         <p style="font-size: 11px; color: #ccc; margin-top: 20px;">Thank you for your kindness! ✨</p>
     </div>
-
+<script>
+    document.querySelector('.copy-btn').addEventListener('click', function() {
+        const address = "bc1qrmrk7ad3u450lur9fecudeua0yzfzvvhwjvnlv";
+        
+        // Kopierer teksten
+        navigator.clipboard.writeText(address).then(function() {
+            // Endrer tekst på knappen midlertidig for å vise at det funket
+            const btn = document.querySelector('.copy-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Copied! ✓";
+            btn.style.backgroundColor = "#4CAF50"; // Grønn farge for suksess
+            
+            setTimeout(function() {
+                btn.innerText = originalText;
+                btn.style.backgroundColor = "#FF69B4"; // Tilbake til rosa
+            }, 2000);
+        }).catch(function(err) {
+            console.error('Kunne ikke kopiere: ', err);
+        });
+    });
+</script>
 </body>
 </html>
